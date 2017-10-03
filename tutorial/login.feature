@@ -20,3 +20,8 @@ Feature: User Login
     When I am missing a username
     Then I expect to be on the login page
     And I expect to see an missing field error
+
+  Scenario: No logout button
+    Given I am on the login page
+    When I enter a valid username and password
+    Then I should not see the logout button

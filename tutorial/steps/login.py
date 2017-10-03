@@ -1,10 +1,11 @@
 import time
 
 from behave import given, when, then, use_step_matcher, step
+from selenium.common.exceptions import NoSuchElementException
 
 use_step_matcher("re")
 
-pause = 1
+pause = 0
 
 
 @given("I am on the login page")
@@ -66,3 +67,14 @@ def step_impl(context):
 def step_impl(context):
     message = context.browser.find_element_by_id('message').text
     assert message == "Missing Username"
+
+@then("I should not see the logout button")
+def step_impl(context):
+    try:
+       context.browser.find_element_by_id('logout-link')
+       assert False
+    except NoSuchElementException:
+       assert True
+
+
+

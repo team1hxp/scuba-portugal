@@ -47,6 +47,7 @@
         var thePassword = document.getElementById("password").value;
 
         if (theUsername == "user" && thePassword == "pass") {
+            createCookie("loggedIn", 1, 30);
             document.getElementById("message").innerHTML = "Welcome";
             window.location.href = "welcome.html";
         }
